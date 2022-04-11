@@ -19,30 +19,50 @@ namespace ExceptionHandlingExercise
             // ------------------------------------------------------------------------------
 
 
-
             //TODO START HERE:
-            
+            char[] arr = new char[] {'1','2', '3', '4', '5', '6', 'a', 'b', 'c'};
+            List<int> numbers = new List<int>();
+            string str;
             // Make a foreach loop to iterate through your character array
-            
-                // Now create a try catch
-                
-                
-                    // Inside your try block
-                        // set your string variable to each array element in your char[] to .ToString()
-                        // Now, using int.Parse, parse your string variable and store in an int variable
-                        // Then add each int to your list
-                
+            foreach (char c in arr)
+            {
+                Console.WriteLine(c);
+            }
+            // Now create a try catch
+            //
+            // Inside your try block
+            // set your string variable to each array element in your char[] to .ToString()
+            // Now, using int.Parse, parse your string variable and store in an int variable
+            // Then add each int to your list
+            foreach (var item in arr)
+            {
+                int number;
+                try 
+                {
+                        str = item.ToString();
+                        number = int.Parse(str);
+                        numbers.Add(number);
+                }
+
                 // catch your Exception:
                 // in the scope of your catch you can use the following, 
-                
-                    //Console.WriteLine($"Unable to Parse '{character}'"); //character will be the name of each item in your collection
-                
-            
+                //
+                //Console.WriteLine($"Unable to Parse '{character}'"); //character will be the name of each item in your collection
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Unable to Parse {item}. Error: {ex.Message}");
+                }
+            }
+
 
             //foreach (var num in numbers)
             //{
             //    Console.WriteLine(num);
             //}
+            foreach (var num in numbers)
+            {
+                Console.WriteLine(num);
+            }
         }
     }
 }
